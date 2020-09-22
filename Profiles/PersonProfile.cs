@@ -10,6 +10,9 @@ namespace DotNetCore_REST.Profiles
     public PersonProfile()
     {
       CreateMap<Person, PersonReadDTO>();
+      CreateMap<PersonCreateDTO, Person>();
+      CreateMap<PersonUpdateDTO, Person>();
+      CreateMap<Person, PersonUpdateDTO>();
     }
   }
 }

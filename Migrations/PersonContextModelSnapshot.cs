@@ -23,28 +23,24 @@ namespace DotNetCore_REST.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("id")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("Birthday")
-                        .HasColumnName("bday")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnName("first_name")
                         .HasColumnType("character varying(250)")
                         .HasMaxLength(250);
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnName("last_name")
                         .HasColumnType("character varying(250)")
                         .HasMaxLength(250);
 
                     b.HasKey("Id");
 
-                    b.ToTable("persons");
+                    b.ToTable("Persons");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,24 +8,24 @@ namespace DotNetCore_REST.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "persons",
+                name: "Persons",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(nullable: false),
-                    first_name = table.Column<string>(maxLength: 250, nullable: false),
-                    last_name = table.Column<string>(maxLength: 250, nullable: false),
-                    bday = table.Column<DateTime>(nullable: false)
+                    Id = table.Column<Guid>(nullable: false),
+                    FirstName = table.Column<string>(maxLength: 250, nullable: false),
+                    LastName = table.Column<string>(maxLength: 250, nullable: false),
+                    Birthday = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_persons", x => x.id);
+                    table.PrimaryKey("PK_Persons", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "persons");
+                name: "Persons");
         }
     }
 }

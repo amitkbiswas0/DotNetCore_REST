@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 
 namespace DotNetCore_REST
 {
@@ -25,7 +26,10 @@ namespace DotNetCore_REST
       // DB Context
       services.AddDbContext<PersonContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
-      services.AddControllers();
+      // JSON serializer
+      services.AddControllers().AddNewtonsoftJson(
+        s => s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver()
+      );
 
       // Automapper for DTO(Data Transfer Object)
       services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -41,6 +45,7 @@ namespace DotNetCore_REST
         app.UseDeveloperExceptionPage();
       }
 
+      // middlewares
       app.UseHttpsRedirection();
       app.UseRouting();
       app.UseAuthorization();

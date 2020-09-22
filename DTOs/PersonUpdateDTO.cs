@@ -1,14 +1,10 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DotNetCore_REST.Models
+namespace DotNetCore_REST.DTOs
 {
-  public class Person
+  public class PersonUpdateDTO
   {
-    [Key]
-    [Required]
-    public Guid Id { get; set; }
-
     [Required]
     [MaxLength(250)]
     public string FirstName { get; set; }

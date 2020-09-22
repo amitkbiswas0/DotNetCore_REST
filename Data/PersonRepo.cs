@@ -1,6 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
+
 using DotNetCore_REST.Models;
 
 namespace DotNetCore_REST.Data
@@ -19,6 +20,29 @@ namespace DotNetCore_REST.Data
     public Person GetPersonById(Guid Id)
     {
       return _context.Persons.FirstOrDefault(row => Id.Equals(row.Id));
+    }
+
+    public void CreatePerson(Person person)
+    {
+      if (person == null)
+        throw new ArgumentException(nameof(person));
+
+      _context.Persons.Add(person);
+    }
+
+    public void UpdatePerson(Person person) { }
+
+    public void DeletePerson(Person person)
+    {
+      if (person == null)
+        throw new ArgumentException(nameof(person));
+
+      _context.Persons.Remove(person);
+    }
+
+    public void SaveChanges()
+    {
+      _context.SaveChanges();
     }
   }
 }
